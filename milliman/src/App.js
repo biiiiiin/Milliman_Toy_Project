@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import './App.css';
 import { Collapse, ConfigProvider } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
+
 import { Resizable } from 're-resizable';
 import TreeView from '@mui/lab/TreeView';
 import TreeItem from '@mui/lab/TreeItem';
@@ -13,6 +15,10 @@ import { treeItemClasses } from '@mui/lab/TreeItem';
 import Typography from '@mui/material/Typography';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FolderIcon from '@mui/icons-material/Folder';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+const { Panel } = Collapse;
 
 ///
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
@@ -333,13 +339,15 @@ StyledTreeItem.propTypes = {
 //   }
 // ];
 
-const items1 = [
+const category1 = [
   {
     key: '1',
     label: 'category 1',
-    children: <TreeView
+    children: 
+
+    <TreeView
       aria-label="category1"
-      sx={{ maxHeight: 277, flexGrow: 1, maxWidth: 230}}
+      sx={{ maxHeight: 277, flexGrow: 1, width: 230}}
     >
       <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
       <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
@@ -444,122 +452,124 @@ const items1 = [
           bgColorForDarkMode="#071318"
         />
       </StyledTreeItem>
-      </TreeView>
+    </TreeView>
+    
   }
 ];
 
-const items2 = [
+const category2 = [
   {
     key: '1',
     label: 'category 2',
-    children: <TreeView
-      aria-label="category1"
-      sx={{ maxHeight: 277, flexGrow: 1, maxWidth: 230}}
-    >
-      <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
-      <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
-        <StyledTreeItem
-          nodeId="3"
-          labelText="File 1"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="4"
-          labelText="File 2"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="5"
-          labelText="File 3"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="6"
-          labelText="File 4"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="7"
-          labelText="File 5"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="8"
-          labelText="File 6"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="9"
-          labelText="File 7"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="10"
-          labelText="File 8"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="11"
-          labelText="File 9"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-        <StyledTreeItem
-          nodeId="12"
-          labelText="File 10"
-          labelIcon={InsertDriveFileIcon}
-          labelInfo="90"
-          color="#1a73e8"
-          bgColor="#e8f0fe"
-          colorForDarkMode="#B8E7FB"
-          bgColorForDarkMode="#071318"
-        />
-      </StyledTreeItem>
-      </TreeView>
+    children:  <div className='box2'></div>
+    // <TreeView
+    //   aria-label="category1"
+    //   sx={{ maxHeight: 277, flexGrow: 1, maxWidth: 230}}
+    // >
+    //   <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
+    //   <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
+    //     <StyledTreeItem
+    //       nodeId="3"
+    //       labelText="File 1"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="4"
+    //       labelText="File 2"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="5"
+    //       labelText="File 3"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="6"
+    //       labelText="File 4"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="7"
+    //       labelText="File 5"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="8"
+    //       labelText="File 6"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="9"
+    //       labelText="File 7"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="10"
+    //       labelText="File 8"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="11"
+    //       labelText="File 9"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //     <StyledTreeItem
+    //       nodeId="12"
+    //       labelText="File 10"
+    //       labelIcon={InsertDriveFileIcon}
+    //       labelInfo="90"
+    //       color="#1a73e8"
+    //       bgColor="#e8f0fe"
+    //       colorForDarkMode="#B8E7FB"
+    //       bgColorForDarkMode="#071318"
+    //     />
+    //   </StyledTreeItem>
+    // </TreeView>
   }
 ];
 
@@ -592,52 +602,250 @@ class App extends Component{
         <ConfigProvider
           theme={{
             token: {
-              padding : '23px',
-              borderRadiusLG : 0,
+              padding : '0px',
+              borderRadius : 0,
               colorFillAlter : 'rgb(235, 235, 235)',
-              lineWidth : 0
+              lineWidth : 0,
+              lineHeight : '23px'
             },
           }}
         >
-            <div
-              style={{
-                width: '230px',
-                height: '100%',
-                backgroundColor: 'green',
-              }}
-            >
-              <Resizable
-                defaultSize={{
-                  width: '230px', //001의 최초 넓이
-                  height: '22px', //001의 최초 높이
-                }}
-                maxHeight="500" //001의 최대
-                minHeight="23" //001의 최소
-              >
-                <Collapse items={items1}/>
-              </Resizable>
-              {/* <div style={{ width: '230px', height: '100%', backgroundColor : "red" }}>002</div> */}
-              <Collapse items={items2}/>
-            </div>
-    
-            {/* <Collapse items={items1}/>
-            <Collapse items={items2}/> */}
-          
-          {/* <Resizable
-            defaultSize={{
-              width: '230px',
-              height: '277px',
-            }}
-            maxHeight="398"
-            minHeight="100"
-          >
-          <div className='category1'>
-            <Collapse items={items1}/>
-          </div>
-          </Resizable>
-          <div className='category2'>
-            <Collapse items={items2}/>
-          </div> */}
+          <>
+            <Collapse
+              items={[
+                    {
+                      key: '1',
+                      label: 'Category 1',
+                      children: <TreeView
+                      aria-label="category1"
+                      sx={{ maxHeight: 277, flexGrow: 1, width: 230}}
+                    >
+                      <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
+                      <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
+                        <StyledTreeItem
+                          nodeId="3"
+                          labelText="File 1"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="4"
+                          labelText="File 2"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="5"
+                          labelText="File 3"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="6"
+                          labelText="File 4"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="7"
+                          labelText="File 5"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="8"
+                          labelText="File 6"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="9"
+                          labelText="File 7"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="10"
+                          labelText="File 8"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="11"
+                          labelText="File 9"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="12"
+                          labelText="File 10"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                      </StyledTreeItem>
+                              </TreeView>,
+                    },
+                ]}
+              expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+            />
+            <Collapse
+              items={[
+                    {
+                      key: '1',
+                      label: 'Category 2',
+                      children: <TreeView
+                      aria-label="category1"
+                      sx={{ maxHeight: 277, flexGrow: 1, width: 230}}
+                    >
+                      <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
+                      <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
+                        <StyledTreeItem
+                          nodeId="3"
+                          labelText="File 1"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="4"
+                          labelText="File 2"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="5"
+                          labelText="File 3"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="6"
+                          labelText="File 4"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="7"
+                          labelText="File 5"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="8"
+                          labelText="File 6"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="9"
+                          labelText="File 7"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="10"
+                          labelText="File 8"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="11"
+                          labelText="File 9"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                        <StyledTreeItem
+                          nodeId="12"
+                          labelText="File 10"
+                          labelIcon={InsertDriveFileIcon}
+                          labelInfo="90"
+                          color="#1a73e8"
+                          bgColor="#e8f0fe"
+                          colorForDarkMode="#B8E7FB"
+                          bgColorForDarkMode="#071318"
+                        />
+                      </StyledTreeItem>
+                    </TreeView>,
+                    },
+                ]}
+              expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+            />
+          </>
         </ConfigProvider>
       </div>
       <div className="contents">

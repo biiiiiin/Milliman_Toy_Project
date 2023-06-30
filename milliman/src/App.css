@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
 
 * {
-  text-align: center;
   font-size: 10px;
   font-family: 'Inter', sans-serif;
+  color: black;
   max-width: 960px;
   max-height: 630px;
 }
@@ -12,6 +12,7 @@
   height: 30px;
   width: 100%;
   line-height: 30px;
+  text-align: center;
   background-color: rgb(235, 235, 235);
 }
 
@@ -20,7 +21,8 @@
   width: 230px;
   background-color: white;
   float: left;
-  overflow: hidden
+  overflow: hidden;
+  text-align: left;
 }
 
 .contents{
@@ -42,3 +44,18 @@
   height: 277px;
   overflow: auto;
 }
+
+.box{
+  height: 600px;
+}
+
+.box1{
+  height: 277px;
+  background-color: aqua;
+}
+
+.box2{
+  height: 277px;
+  background-color: aquamarine;
+}
+
