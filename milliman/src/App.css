@@ -8,6 +8,11 @@
   max-height: 630px;
 }
 
+.MuiTreeView-root{
+  font-size: 10px;
+
+}
+
 .titleBar{
   height: 30px;
   width: 100%;
@@ -21,7 +26,7 @@
   width: 230px;
   background-color: white;
   float: left;
-  overflow: hidden;
+  overflow: scroll;
   text-align: left;
 }
 
@@ -59,3 +64,4 @@
   background-color: aquamarine;
 }
 
+.hi{}
