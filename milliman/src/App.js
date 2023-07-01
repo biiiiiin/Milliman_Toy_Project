@@ -1,13 +1,11 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import { Collapse, ConfigProvider } from 'antd';
+import { Collapse, ConfigProvider, theme } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
-
 import { Resizable } from 're-resizable';
 import TreeView from '@mui/lab/TreeView';
 import TreeItem from '@mui/lab/TreeItem';
 import { TitleBar } from 'react-desktop/windows';
-
 import PropTypes from 'prop-types';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -15,18 +13,16 @@ import { treeItemClasses } from '@mui/lab/TreeItem';
 import Typography from '@mui/material/Typography';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FolderIcon from '@mui/icons-material/Folder';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { style } from '/Users/biiiiiin/Desktop/electron/Milliman_Toy_Project/milliman/src/style.ts';
 
-const { Panel } = Collapse;
 
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.common.black,
   [`& .${treeItemClasses.content}`]: {
-    color: theme.palette.text.secondary,
-    borderTopRightRadius: theme.spacing(2),
-    borderBottomRightRadius: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    color: theme.palette.common.black,
+    borderTopRightRadius: theme.spacing(0),
+    borderBottomRightRadius: theme.spacing(0),
+    paddingRight: theme.spacing(0),
     fontWeight: theme.typography.fontWeightMedium,
     '&.Mui-expanded': {
       fontWeight: theme.typography.fontWeightRegular,
@@ -41,13 +37,12 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
     [`& .${treeItemClasses.label}`]: {
       fontWeight: 'inherit',
       color: 'inherit',
+      fontSize : '10px'
     },
   },
   [`& .${treeItemClasses.group}`]: {
-    marginLeft: 0,
-    [`& .${treeItemClasses.content}`]: {
-      paddingLeft: theme.spacing(2),
-    },
+    marginLeft: 13,
+    fontSize : '10px'
   },
 }));
 
@@ -57,17 +52,12 @@ function StyledTreeItem(props) {
     bgColor,
     color,
     labelIcon: LabelIcon,
-    labelInfo,
     labelText,
-    colorForDarkMode,
-    bgColorForDarkMode,
     ...other
   } = props;
 
   const styleProps = {
-    '--tree-view-color': theme.palette.mode !== 'dark' ? color : colorForDarkMode,
-    '--tree-view-bg-color':
-      theme.palette.mode !== 'dark' ? bgColor : bgColorForDarkMode,
+    '--tree-view-color':  color,
   };
 
   return (
@@ -77,16 +67,13 @@ function StyledTreeItem(props) {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            p: 0.5,
+            p: 0.3,
             pr: 0,
           }}
         >
-          <Box component={LabelIcon} color="inherit" sx={{ mr: 1 }} />
-          <Typography variant="body2" sx={{ fontWeight: 'inherit', flexGrow: 1 }}>
+          <Box component={LabelIcon} color="inherit" sx={{ mr: 0.7 }} />
+          <Typography variant="body2"  sx={{ fontFamily : 'inherit', color : 'black', fontSize : 10}}>
             {labelText}
-          </Typography>
-          <Typography variant="caption" color="inherit">
-            {labelInfo}
           </Typography>
         </Box>
       }
@@ -98,83 +85,37 @@ function StyledTreeItem(props) {
 
 StyledTreeItem.propTypes = {
   bgColor: PropTypes.string,
-  bgColorForDarkMode: PropTypes.string,
   color: PropTypes.string,
-  colorForDarkMode: PropTypes.string,
   labelIcon: PropTypes.elementType.isRequired,
   labelInfo: PropTypes.string,
   labelText: PropTypes.string.isRequired,
 };
 
-class App extends Component{
-  constructor(props) {
-    super(props);
-    this.state = { isMaximized: true };
-  }
-
-  close = () => console.log('close');
-  minimize = () => console.log('minimize');
-  toggleMaximize = () => this.setState({ isMaximized: !this.state.isMaximized });
-
-  render(){
-    return <div className="main">
-      <div className="titleBar">
-        <TitleBar
-          title="Milliman"
-          controls
-          isMaximized={this.state.isMaximized}
-          theme={this.props.theme}
-          background="lightgrey"
-          onCloseClick={this.close}
-          onMinimizeClick={this.minimize}
-          onMaximizeClick={this.toggleMaximize}
-          onRestoreDownClick={this.toggleMaximize}
-      />
-      </div>
-      <div className="sider">
-        <ConfigProvider
-          theme={{
-            token: {
-              padding : '0px',
-              borderRadius : 0,
-              colorFillAlter : 'rgb(235, 235, 235)',
-              lineWidth : 0,
-              lineHeight : '23px',
-            },
-          }}
-        >
-          <>
-            <Collapse
-              items={[
-                    {
-                      key: '1',
-                      label: 'Category 1',
-                      children: 
-                      <Resizable
-                        defaultSize={{
-                          width: '230', 
-                          height: '277', // category 1의 시작 높이
-                        }}
-                        maxHeight="277" // category 1의 최대 높이
-                        minHeight="50" // category 1의 최소 높이
-                        
-                      >
+const Category1 = (panelStyle) => [
+  {
+    key: "1",
+    label: "Category 1",
+    children: <div>
+                <Resizable
+                      style={style}
+                      defaultSize={{
+                        width: '230', 
+                        height: '277', // category 1의 시작 높이
+                      }}
+                      maxHeight="277" // category 1의 최대 높이
+                      minHeight="46" // category 1의 최소 높이
+                    >
                       <TreeView
                         aria-label="category1"
-                        sx={{ maxHeight: 277, flexGrow: 1, width: 230, fontSize:'10px'}}
+                        sx={{ height: 277, flexGrow: 1, width: 230}}
                         defaultExpanded={['2']}
                       >
                       <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
-                      
                       <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
                         <StyledTreeItem
                           nodeId="3"
                           labelText="File 1"
                           labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="4"
@@ -182,8 +123,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="5"
@@ -191,8 +130,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="6"
@@ -200,8 +137,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="7"
@@ -209,8 +144,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="8"
@@ -218,8 +151,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="9"
@@ -227,8 +158,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="10"
@@ -236,8 +165,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="11"
@@ -245,8 +172,6 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                         <StyledTreeItem
                           nodeId="12"
@@ -254,137 +179,149 @@ class App extends Component{
                           labelIcon={InsertDriveFileIcon}
                           color="#1a73e8"
                           bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
                         />
                       </StyledTreeItem>
                       </TreeView>
-                      </Resizable>
-                    },
-                ]}
-              expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0}
-              style={{}}
-            />}
-            />
-            <Collapse
-              items={[
-                    {
-                      key: '1',
-                      label: 'Category 2',
-                      children: <div className='hi'>
-                        <TreeView
-                      aria-label="category1"
-                      sx={{ maxHeight: 277, flexGrow: 1, width: 230}}
-                      defaultExpanded={['2']}
-                      >
-                      <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
-                      <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
-                        <StyledTreeItem
-                          nodeId="3"
-                          labelText="File 1"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="4"
-                          labelText="File 2"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="5"
-                          labelText="File 3"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="6"
-                          labelText="File 4"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="7"
-                          labelText="File 5"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="8"
-                          labelText="File 6"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="9"
-                          labelText="File 7"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="10"
-                          labelText="File 8"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="11"
-                          labelText="File 9"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                        <StyledTreeItem
-                          nodeId="12"
-                          labelText="File 10"
-                          labelIcon={InsertDriveFileIcon}
-                          color="#1a73e8"
-                          bgColor="#e8f0fe"
-                          colorForDarkMode="#B8E7FB"
-                          bgColorForDarkMode="#071318"
-                        />
-                      </StyledTreeItem>
-                    </TreeView>
-                      </div>,
-                    },
-                ]}
-              expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
-              style={{}}
-            />
-          </>
-        </ConfigProvider>
-      </div>
-      <div className="contents">
-        
-      </div>
-    </div>
+                </Resizable>
+              </div>,
+    style: panelStyle
   }
+];
+
+const Category2 = (panelStyle) => [
+  {
+    key: "1",
+    label: "Category 2",
+    children: <div style={{overflowX : 'hidden'}}>
+                <TreeView
+                  aria-label="category1"
+                  sx={{ height: 277, flexGrow: 1, width: 230}}
+                  defaultExpanded={['2']}
+                >
+                  <StyledTreeItem nodeId="1" labelText="Folder 1" labelIcon={FolderIcon}/>
+                  <StyledTreeItem nodeId="2" labelText="Folder 2" labelIcon={FolderIcon}>
+                    <StyledTreeItem
+                      nodeId="3"
+                      labelText="File 1"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="4"
+                      labelText="File 2"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="5"
+                      labelText="File 3"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="6"
+                      labelText="File 4"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="7"
+                      labelText="File 5"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="8"
+                      labelText="File 6"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="9"
+                      labelText="File 7"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="10"
+                      labelText="File 8"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="11"
+                      labelText="File 9"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                    <StyledTreeItem
+                      nodeId="12"
+                      labelText="File 10"
+                      labelIcon={InsertDriveFileIcon}
+                      color="#1a73e8"
+                      bgColor="#e8f0fe"
+                    />
+                  </StyledTreeItem>
+                </TreeView>
+              </div>,
+    style: panelStyle
+  }
+];
+
+const App = () =>{
+  const { token } = theme.useToken();
+  const panelStyle = {
+    background: token.colorFillAlter,
+    borderRadius: token.borderRadiusLG,
+    border: 'none',
+  };
+
+  return <div className="main">
+  <div className="titleBar">
+    <TitleBar
+      title="Milliman"
+      controls
+      background="lightgrey"
+  />
+  </div>
+  <div className="sider">
+    <ConfigProvider
+      theme={{
+        token: {
+          padding : '0px',
+          borderRadius : 0,
+          colorFillAlter : 'rgb(235, 235, 235)',
+        },
+      }}
+    >
+      <>
+        <Collapse
+          items= {Category1(panelStyle)}
+          expandIcon={({ isActive })=> <CaretRightOutlined rotate={isActive ? 90 : 0}/>
+          }
+        />
+        <Collapse
+          items= {Category2(panelStyle)}
+          expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />
+          }
+          style={{...style}}
+        />
+      </>
+    </ConfigProvider>
+  </div>
+  <div className="contents">
+    
+  </div>
+</div>
 }
 
 export default App;
