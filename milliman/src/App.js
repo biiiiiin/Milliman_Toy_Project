@@ -296,6 +296,7 @@ const App = () =>{
           padding : '0px',
           borderRadius : 0,
           colorFillAlter : 'rgb(235, 235, 235)',
+          height : '23px'
         },
       }}
     >

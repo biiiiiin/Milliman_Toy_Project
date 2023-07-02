@@ -39,25 +39,3 @@
   border-width: 0px 0px 0px 1px;
   border-left-color: lightgray;
 }
-
-.category1{
-  height: 277px;
-}
-
-.category2{
-  height: 277px;
-}
-
-.box{
-  height: 600px;
-}
-
-.box1{
-  height: 277px;
-  background-color: aqua;
-}
-
-.box2{
-  height: 277px;
-  background-color: aquamarine;
-}
