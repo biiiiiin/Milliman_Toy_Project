@@ -7,6 +7,7 @@
 
 ### Error
 git clone, 설치 이후 첫 실행 시 다음과 같은 error message 출력
+---
 Failed to compile.
 [0] 
 [0] [eslint] Failed to load parser '@typescript-eslint/parser' declared in 'package.json » eslint-config-react-app#overrides[0]': Cannot find module 'typescript'
