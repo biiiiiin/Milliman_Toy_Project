@@ -13,7 +13,7 @@ import { treeItemClasses } from '@mui/lab/TreeItem';
 import Typography from '@mui/material/Typography';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FolderIcon from '@mui/icons-material/Folder';
-import { style } from '/Users/biiiiiin/Desktop/electron/Milliman_Toy_Project/milliman/src/style.ts';
+import  { style }  from './style.ts';
 
 
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
