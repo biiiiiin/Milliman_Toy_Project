@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { Collapse, ConfigProvider, theme } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
@@ -7,7 +7,7 @@ import TreeView from '@mui/lab/TreeView';
 import TreeItem from '@mui/lab/TreeItem';
 import { TitleBar } from 'react-desktop/windows';
 import PropTypes from 'prop-types';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { treeItemClasses } from '@mui/lab/TreeItem';
 import Typography from '@mui/material/Typography';
@@ -47,7 +47,6 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
 }));
 
 function StyledTreeItem(props) {
-  const theme = useTheme();
   const {
     bgColor,
     color,
@@ -87,7 +86,6 @@ StyledTreeItem.propTypes = {
   bgColor: PropTypes.string,
   color: PropTypes.string,
   labelIcon: PropTypes.elementType.isRequired,
-  labelInfo: PropTypes.string,
   labelText: PropTypes.string.isRequired,
 };
 
@@ -106,7 +104,6 @@ const Category1 = (panelStyle) => [
                       minHeight="46" // category 1의 최소 높이
                     >
                       <TreeView
-                        aria-label="category1"
                         sx={{ height: 277, flexGrow: 1, width: 230}}
                         defaultExpanded={['2']}
                       >
@@ -194,7 +191,6 @@ const Category2 = (panelStyle) => [
     label: "Category 2",
     children: <div style={{overflowX : 'hidden'}}>
                 <TreeView
-                  aria-label="category1"
                   sx={{ height: 277, flexGrow: 1, width: 230}}
                   defaultExpanded={['2']}
                 >
